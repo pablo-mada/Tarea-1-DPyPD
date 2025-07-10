@@ -1,0 +1,48 @@
+# Archivos de macOS
+.DS_Store
+
+# Directorios de entornos virtuales
+venv/
+.venv/
+env/
+
+# Archivos de caché y compilación de Python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_metadata
+
+# Modelos guardados
+models/
+
+# Datos procesados / intermedios
+data/processed/
+data/*.parquet
+data/*.csv
+
+# Reportes y visualizaciones generadas
+reports/
+*.png
+*.jpg
+*.svg
+*.html
+*.pdf
+
+# Archivos de registro 
+*.log
+
+# Credenciales y configuraciones sensibles 
+*.env
+config_local.py
+
+# Archivos temporales y de copia de seguridad
+*~
+*.bak
+*.tmp
+tmp/
+
