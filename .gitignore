@@ -26,12 +26,12 @@ data/*.parquet
 data/*.csv
 
 # Reportes y visualizaciones generadas
-reports/
-*.png
-*.jpg
-*.svg
-*.html
-*.pdf
+#reports/
+#*.png
+#*.jpg
+#*.svg
+#*.html
+#*.pdf
 
 # Archivos de registro 
 *.log
