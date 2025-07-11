@@ -70,11 +70,11 @@ Realizaremos lo siguiente:
 
 A continuación, se muestran los gráficos del puntaje F1 del modelo y del tamaño de la muestra por mes:
 
-### F1-score por Mes
-![](reports/monthly_f1_score.png "Gráfico del F1-score Mensual")
+### Puntaje F1 por mes
+![](reports/monthly_f1_score.png "Gráfico del puntaje F1 mensual")
 
-### Tamaño de la Muestra por Mes
-![](reports/monthly_sample_size.png "Gráfico del Tamaño de la Muestra Mensual")
+### Tamaño de la muestra por mes
+![](reports/monthly_sample_size.png "Gráfico del tamaño de la muestra Mensual")
 
 Observamos que el número de ejemplos bajó en Marzo y luego creció paulatinamente, pero no llegando a los 6 millones de Enero y Febrero.
 
@@ -105,12 +105,12 @@ La siguiente tabla muestra los resultados de todo el año 2020, con las columnas
 
 En base a esto, el modelo no mantiene un rendimiento consistente a lo largo del tiempo. Al observar la columna f1_score en la tabla de resultados, se aprecia claramente una marcada variación.
 
-    - Durante enero y febrero de 2020, el modelo exhibe un rendimiento alto y estable, con puntaje F1 de aproximadamente 0.730 y 0.735, respectivamente. Esto es esperable, ya que el modelo fue entrenado con datos de Enero y los patrones de Febrero son aún muy similares.
+  - Durante enero y febrero de 2020, el modelo exhibe un rendimiento alto y estable, con puntaje F1 de aproximadamente 0.730 y 0.735, respectivamente. Esto es esperable, ya que el modelo fue entrenado con datos de Enero y los patrones de Febrero son aún muy similares.
 
-    - A partir de marzo de 2020, el puntaje F1 comienza a descender, y en abril de 2020, se observa una caída drástica hasta 0.611. Este es el punto más bajo del rendimiento del modelo.
+  - A partir de marzo de 2020, el puntaje F1 comienza a descender, y en abril de 2020, se observa una caída drástica hasta 0.611. Este es el punto más bajo del rendimiento del modelo.
 
 
-    - Luego, entre mayo y diciembre de 2020, el putaje F1 muestra una lenta recuperación progresiva, pero nunca alcanza los niveles iniciales de enero y febrero, manteniéndose en el rango de 0.616 a 0.721.
+  - Luego, entre mayo y diciembre de 2020, el putaje F1 muestra una lenta recuperación progresiva, pero nunca alcanza los niveles iniciales de enero y febrero, manteniéndose en el rango de 0.616 a 0.721.
     
 
 Esta no consistencia en el rendimiento es un indicador claro de que el modelo se está viendo afectado por cambios en los datos.
@@ -123,9 +123,9 @@ Esta no consistencia en el rendimiento es un indicador claro de que el modelo se
 
 La variación observada en el rendimiento del modelo a lo largo de 2020 puede explicarse principalmente por la irrupción y el desarrollo de la pandemia de COVID-19 y sus consecuentes efectos en el comportamiento social y económico, lo que se traduce en fenómenos de Data Drift y Concept Drift.
 
-    - Caída drástica en el volumen de viajes: La columna `num_examples` es la clave aquí. En enero y febrero se observan más de 6 millones de viajes. En marzo, este número se reduce a casi 3 millones, y en abril y mayo, cae estrepitosamente a apenas 236 mil y 346 mil viajes, respectivamente. Esta disminución masiva refleja las estrictas medidas de confinamiento y la drástica reducción de la movilidad en la ciudad de Nueva York.
+  - Caída drástica en el volumen de viajes: La columna `num_examples` es la clave aquí. En enero y febrero se observan más de 6 millones de viajes. En marzo, este número se reduce a casi 3 millones, y en abril y mayo, cae estrepitosamente a apenas 236 mil y 346 mil viajes, respectivamente. Esta disminución masiva refleja las estrictas medidas de confinamiento y la drástica reducción de la movilidad en la ciudad de Nueva York.
 
-    - Data Drift (Deriva de datos): Los datos de abril y mayo son cualitativamente diferentes a los de enero.
+  - Data Drift (Deriva de datos): Los datos de abril y mayo son cualitativamente diferentes a los de enero.
 
     - Menos viajes por motivos de trabajo u ocio, y más viajes esenciales. Esto cambia las distribuciones de características como `pickup_hour` (menos picos en horas punta), `pickup_weekday` (menos distinción entre laborables y fin de semana), `trip_distance` (posiblemente más viajes cortos).
 
@@ -146,15 +146,15 @@ La variación observada en el rendimiento del modelo a lo largo de 2020 puede ex
 
 Para mejorar la capacidad del modelo de adaptarse a estos cambios y mantener un rendimiento aceptable, especialmente frente a fenómenos de drift tan severos, se recomiendan las siguientes acciones:
 
-    - Re-entrenamiento periódico y automatizado
+  - Re-entrenamiento periódico y automatizado
 
     Implementar un pipeline de ML que re-entrene automáticamente el modelo con los datos más recientes (ej. de los últimos 3-6 meses) de forma regular (ej. mensual o trimestral).
 
-    - Monitoreo activo del rendimiento y del drift
+  - Monitoreo activo del rendimiento y del drift
 
     Un monitoreo proactivo permitiría detectar rápidamente la aparición de drift o una degradación del rendimiento, disparando alertas para una intervención manual o para el re-entrenamiento automático, antes de que el impacto en la predicción sea significativo.
 
-    - Ingeniería de características consciente del Contexto
+  - Ingeniería de características consciente del Contexto
 
     Explorar y añadir características que capturen el contexto externo y temporal. Por ejemplo, indicadores de fases de la pandemia, variables económicas, features que capturen eventos anómalos o estacionales.
 
