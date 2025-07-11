@@ -4,6 +4,7 @@
 
 - Crea la estructura de carpetas:
 
+```
 ├── data/
 │    ├── processed/    
 │    └──  raw/   
@@ -24,6 +25,7 @@
 ├── run_training.py
 ├── run_monthly_evaluation.py
 └── requirements.txt
+```
 
 - Guarda los archivos: Copia el código de cada sección en su archivo `.py` correspondiente.
 
