@@ -133,13 +133,13 @@ La variación observada en el rendimiento del modelo a lo largo de 2020 puede ex
 
     - Es posible que la demografía o el propósito de los viajes de los pocos pasajeros restantes también hayan cambiado, impactando otras características numéricas.
 
-    - Concept Drift (Deriva de concepto): La relación entre las características de un viaje y la probabilidad de una propina alta también pudo haber cambiado.
+  - Concept Drift (Deriva de concepto): La relación entre las características de un viaje y la probabilidad de una propina alta también pudo haber cambiado.
 
-        - La gente podría haber dado propina de manera diferente debido a la situación económica personal, o por un sentimiento de apoyo a los trabajadores esenciales que seguían en activo. Factores psicológicos y económicos externos, no capturados por las features existentes, alteraron la función que decide si se da una propina alta.
+    - La gente podría haber dado propina de manera diferente debido a la situación económica personal, o por un sentimiento de apoyo a los trabajadores esenciales que seguían en activo. Factores psicológicos y económicos externos, no capturados por las features existentes, alteraron la función que decide si se da una propina alta.
 
-    - Lenta recuperación del rendimiento (Mayo-Diciembre 2020)
+  - Lenta recuperación del rendimiento (Mayo-Diciembre 2020)
 
-        - A medida que las restricciones se fueron flexibilizando y la movilidad aumentó, se ve un incremento gradual en `num_examples`. El modelo muestra una ligera recuperación en su puntaje F1. Esto indica que los patrones de viaje y propinas comenzaron a normalizarse parcialmente o a estabilizarse en una nueva normalidad.
+    - A medida que las restricciones se fueron flexibilizando y la movilidad aumentó, se ve un incremento gradual en `num_examples`. El modelo muestra una ligera recuperación en su puntaje F1. Esto indica que los patrones de viaje y propinas comenzaron a normalizarse parcialmente o a estabilizarse en una nueva normalidad.
 
 
 - ¿Qué acciones recomendarías para mejorar la robustez del modelo en el tiempo?
