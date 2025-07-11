@@ -1,8 +1,26 @@
-# Tarea 1 de Desarrollo de proyectos y productos de datos
+## Tarea 1 de Desarrollo de proyectos y productos de datos
 
-# Instrucciones para configurar y ejecutar el proyecto:
+### Objetivo General
 
-- Crea la estructura de carpetas:
+Usando como base el código provisto en el siguiente notebook de Google Colab:
+
+[Notebook Original de clasificación de Propinas para Viajes en Taxi en NYC](https://colab.research.google.com/drive/1CajYNrge3sAdV7Tc6YDvbB6fVqIP2qsJ "Acceder al notebook original en Google Colab")
+
+
+Realizaremos lo siguiente:
+
+- Construir un repositorio en GitHub que reproduzca el análisis del notebook, aplicando buenas prácticas de ingeniería de software y organización de proyectos de ciencia de datos vistas en el curso.
+
+- Diseñar una estrategia para explicar el comportamiento distinto del modelo en diferentes meses del año, implementarla y analizar los resultados obtenidos.
+
+
+
+
+
+
+## Instrucciones para configurar y ejecutar el proyecto:
+
+- Crear la estructura de carpetas:
 
 ```
 ├── data/
@@ -27,7 +45,7 @@
 └── requirements.txt
 ```
 
-- Guarda los archivos: Copia el código de cada sección en su archivo `.py` correspondiente.
+- Guardar los archivos: Copiar el código de cada sección en su archivo `.py` correspondiente.
 
 - Crea un entorno virtual 
 
@@ -39,7 +57,7 @@
 
      `pip install -r requirements.txt`   
 
-- Entrena el modelo con datos de enero
+- Entrena el modelo con datos de Enero
 
     `python run_training.py `
 
@@ -57,8 +75,6 @@ A continuación, se muestran los gráficos del puntaje F1 del modelo y del tama�
 
 ### Tamaño de la Muestra por Mes
 ![](reports/monthly_sample_size.png "Gráfico del Tamaño de la Muestra Mensual")
-
-- Identifica patrones o anomalías en el rendimiento mensual.
 
 Observamos que el número de ejemplos bajó en Marzo y luego creció paulatinamente, pero no llegando a los 6 millones de Enero y Febrero.
 
@@ -89,12 +105,12 @@ La siguiente tabla muestra los resultados de todo el año 2020, con las columnas
 
 En base a esto, el modelo no mantiene un rendimiento consistente a lo largo del tiempo. Al observar la columna f1_score en la tabla de resultados, se aprecia claramente una marcada variación.
 
-- Durante enero y febrero de 2020, el modelo exhibe un rendimiento alto y estable, con puntaje F1 de aproximadamente 0.730 y 0.735, respectivamente. Esto es esperable, ya que el modelo fue entrenado con datos de Enero y los patrones de Febrero son aún muy similares.
+    - Durante enero y febrero de 2020, el modelo exhibe un rendimiento alto y estable, con puntaje F1 de aproximadamente 0.730 y 0.735, respectivamente. Esto es esperable, ya que el modelo fue entrenado con datos de Enero y los patrones de Febrero son aún muy similares.
 
-- A partir de marzo de 2020, el puntaje F1 comienza a descender, y en abril de 2020, se observa una caída drástica hasta 0.611. Este es el punto más bajo del rendimiento del modelo.
+    - A partir de marzo de 2020, el puntaje F1 comienza a descender, y en abril de 2020, se observa una caída drástica hasta 0.611. Este es el punto más bajo del rendimiento del modelo.
 
 
-- Luego, entre mayo y diciembre de 2020, el putaje F1 muestra una lenta recuperación progresiva, pero nunca alcanza los niveles iniciales de enero y febrero, manteniéndose en el rango de 0.616 a 0.721.
+    - Luego, entre mayo y diciembre de 2020, el putaje F1 muestra una lenta recuperación progresiva, pero nunca alcanza los niveles iniciales de enero y febrero, manteniéndose en el rango de 0.616 a 0.721.
     
 
 Esta no consistencia en el rendimiento es un indicador claro de que el modelo se está viendo afectado por cambios en los datos.
@@ -107,9 +123,9 @@ Esta no consistencia en el rendimiento es un indicador claro de que el modelo se
 
 La variación observada en el rendimiento del modelo a lo largo de 2020 puede explicarse principalmente por la irrupción y el desarrollo de la pandemia de COVID-19 y sus consecuentes efectos en el comportamiento social y económico, lo que se traduce en fenómenos de Data Drift y Concept Drift.
 
-- Caída drástica en el volumen de viajes: La columna `num_examples` es la clave aquí. En enero y febrero se observan más de 6 millones de viajes. En marzo, este número se reduce a casi 3 millones, y en abril y mayo, cae estrepitosamente a apenas 236 mil y 346 mil viajes, respectivamente. Esta disminución masiva refleja las estrictas medidas de confinamiento y la drástica reducción de la movilidad en la ciudad de Nueva York.
+    - Caída drástica en el volumen de viajes: La columna `num_examples` es la clave aquí. En enero y febrero se observan más de 6 millones de viajes. En marzo, este número se reduce a casi 3 millones, y en abril y mayo, cae estrepitosamente a apenas 236 mil y 346 mil viajes, respectivamente. Esta disminución masiva refleja las estrictas medidas de confinamiento y la drástica reducción de la movilidad en la ciudad de Nueva York.
 
-- Data Drift (Deriva de datos): Los datos de abril y mayo son cualitativamente diferentes a los de enero.
+    - Data Drift (Deriva de datos): Los datos de abril y mayo son cualitativamente diferentes a los de enero.
 
     - Menos viajes por motivos de trabajo u ocio, y más viajes esenciales. Esto cambia las distribuciones de características como `pickup_hour` (menos picos en horas punta), `pickup_weekday` (menos distinción entre laborables y fin de semana), `trip_distance` (posiblemente más viajes cortos).
 
@@ -117,30 +133,39 @@ La variación observada en el rendimiento del modelo a lo largo de 2020 puede ex
 
     - Es posible que la demografía o el propósito de los viajes de los pocos pasajeros restantes también hayan cambiado, impactando otras características numéricas.
 
-- Concept Drift (Deriva de concepto): La relación entre las características de un viaje y la probabilidad de una propina alta también pudo haber cambiado.
+    - Concept Drift (Deriva de concepto): La relación entre las características de un viaje y la probabilidad de una propina alta también pudo haber cambiado.
 
-    - La gente podría haber dado propina de manera diferente debido a la situación económica personal, o por un sentimiento de apoyo a los trabajadores esenciales que seguían en activo. Factores psicológicos y económicos externos, no capturados por las features existentes, alteraron la función que decide si se da una propina alta.
+        - La gente podría haber dado propina de manera diferente debido a la situación económica personal, o por un sentimiento de apoyo a los trabajadores esenciales que seguían en activo. Factores psicológicos y económicos externos, no capturados por las features existentes, alteraron la función que decide si se da una propina alta.
 
-- Lenta recuperación del rendimiento (Mayo-Diciembre 2020)
+    - Lenta recuperación del rendimiento (Mayo-Diciembre 2020)
 
-    - A medida que las restricciones se fueron flexibilizando y la movilidad aumentó, se ve un incremento gradual en `num_examples`. El modelo muestra una ligera recuperación en su puntaje F1. Esto indica que los patrones de viaje y propinas comenzaron a normalizarse parcialmente o a estabilizarse en una nueva normalidad.
+        - A medida que las restricciones se fueron flexibilizando y la movilidad aumentó, se ve un incremento gradual en `num_examples`. El modelo muestra una ligera recuperación en su puntaje F1. Esto indica que los patrones de viaje y propinas comenzaron a normalizarse parcialmente o a estabilizarse en una nueva normalidad.
 
 
 - ¿Qué acciones recomendarías para mejorar la robustez del modelo en el tiempo?
 
 Para mejorar la capacidad del modelo de adaptarse a estos cambios y mantener un rendimiento aceptable, especialmente frente a fenómenos de drift tan severos, se recomiendan las siguientes acciones:
 
-- Re-entrenamiento periódico y automatizado
+    - Re-entrenamiento periódico y automatizado
 
     Implementar un pipeline de ML que re-entrene automáticamente el modelo con los datos más recientes (ej. de los últimos 3-6 meses) de forma regular (ej. mensual o trimestral).
 
-- Monitoreo activo del rendimiento y del drift
+    - Monitoreo activo del rendimiento y del drift
 
     Un monitoreo proactivo permitiría detectar rápidamente la aparición de drift o una degradación del rendimiento, disparando alertas para una intervención manual o para el re-entrenamiento automático, antes de que el impacto en la predicción sea significativo.
 
-- Ingeniería de características consciente del Contexto
+    - Ingeniería de características consciente del Contexto
 
     Explorar y añadir características que capturen el contexto externo y temporal. Por ejemplo, indicadores de fases de la pandemia, variables económicas, features que capturen eventos anómalos o estacionales.
+
+
+## Conclusión
+
+Este proyecto ha logrado modularizar eficazmente el código original, mejorando su estructura, mantenibilidad y escalabilidad. Sin embargo, el análisis de rendimiento del modelo de clasificación de propinas en 2020 reveló un desafío crítico, Data and Concept Drift.
+
+El modelo, entrenado con datos de enero de 2020, mostró una caída significativa en su puntaje F1 a partir de marzo de 2020, coincidiendo con el inicio de la pandemia de COVID-19 y la drástica reducción y cambio en los patrones de viajes en taxi. Esto demuestra que los modelos de Machine Learning no son estáticos, su rendimiento se degrada en entornos dinámicos donde las distribuciones de datos y las relaciones cambian.
+
+Para asegurar la robustez del modelo a largo plazo, es crucial implementar un monitoreo continuo de su rendimiento y de la deriva de datos, así como establecer un pipeline de re-entrenamiento periódico con datos recientes. Estas prácticas son fundamentales para que el modelo se adapte a las nuevas realidades y mantenga su valor predictivo en un mundo en constante evolución.
 
 
 
