@@ -20,7 +20,17 @@ Realizaremos lo siguiente:
 
 ## Instrucciones para configurar y ejecutar el proyecto:
 
-- Crear la estructura de carpetas:
+
+- Clonar el repositorio
+
+Abre tu terminal (o línea de comandos) y clona el repositorio a la ubicación deseada en tu máquina local. Luego, navega al directorio del proyecto:
+
+```bash
+git clone [https://github.com/pablo-mada/Tarea-1-DPyPD.git](https://github.com/pablo-mada/Tarea-1-DPyPD.git)
+cd Tarea-1-DPyPD 
+```
+
+Se creará es siguiente esquema de directorios:
 
 ```
 ├── data/
@@ -45,25 +55,68 @@ Realizaremos lo siguiente:
 └── requirements.txt
 ```
 
-- Guardar los archivos: Copiar el código de cada sección en su archivo `.py` correspondiente.
+- Crea un entorno virtual (llamado `venv`)  
 
-- Crea un entorno virtual 
+```bash
+    python -m venv venv  
+```   
 
-    - `python3 -m venv venv`
-    - `source venv/bin/activate`  # En Linux/macOS
-    - `venv\Scripts\activate` # En Windows
 
-- Instala las dependencias:
+- Activar el entorno virtual
 
-     `pip install -r requirements.txt`   
+```bash
+    source venv/bin/activate  # macOS / Linux
+    venv\Scripts\activate.bat  #Windows
+ ```   
 
-- Entrena el modelo con datos de Enero
+Verás (venv) al inicio de tu prompt de terminal si el entorno está activado correctamente.
 
-    `python run_training.py `
 
-- Ejecuta la evaluación mensual
+- Instalar dependencias
 
-    `python run_monthly_evaluation.py `
+Con el entorno virtual activado, instala todas las librerías de Python necesarias para el proyecto utilizando el archivo `requirements.txt`.
+
+```bash
+    pip install -r requirements.txt
+ ```   
+
+
+
+- Ejecutar el Entrenamiento del Modelo
+
+El script de entrenamiento `run_training.py` se encargará de:
+
+  - Descargar los datos crudos de enero de 2020.
+
+  - Preprocesar los datos y generar las características necesarias.
+
+  - Entrenar el modelo de clasificación de Random Forest.
+
+Para ejecutar:
+
+```bash
+    python run_training.py
+ ```   
+
+
+
+- Ejecutar la evaluación mensual
+
+Una vez que el modelo ha sido entrenado y guardado, puedes ejecutar el script de evaluación `run_monthly_evaluation.py`. Este script:
+
+  - Cargará el modelo previamente entrenado.
+
+  - Descargará y procesará los datos para cada mes de 2020.
+
+  - Realizará predicciones y evaluará el rendimiento (F1-score) del modelo para cada mes.
+
+  - Generará gráficos del rendimiento y del volumen de datos en el directorio reports/.
+
+Para ejecutar:
+
+```bash
+  python run_monthly_evaluation.py
+```   
 
 
 ## Visualización y análisis
@@ -135,11 +188,11 @@ La variación observada en el rendimiento del modelo a lo largo de 2020 puede ex
 
   - Concept Drift (Deriva de concepto): La relación entre las características de un viaje y la probabilidad de una propina alta también pudo haber cambiado.
 
-    - La gente podría haber dado propina de manera diferente debido a la situación económica personal, o por un sentimiento de apoyo a los trabajadores esenciales que seguían en activo. Factores psicológicos y económicos externos, no capturados por las features existentes, alteraron la función que decide si se da una propina alta.
+    La gente podría haber dado propina de manera diferente debido a la situación económica personal, o por un sentimiento de apoyo a los trabajadores esenciales que seguían en activo. Factores psicológicos y económicos externos, no capturados por las features existentes, alteraron la función que decide si se da una propina alta.
 
   - Lenta recuperación del rendimiento (Mayo-Diciembre 2020)
 
-    - A medida que las restricciones se fueron flexibilizando y la movilidad aumentó, se ve un incremento gradual en `num_examples`. El modelo muestra una ligera recuperación en su puntaje F1. Esto indica que los patrones de viaje y propinas comenzaron a normalizarse parcialmente o a estabilizarse en una nueva normalidad.
+    A medida que las restricciones se fueron flexibilizando y la movilidad aumentó, se ve un incremento gradual en `num_examples`. El modelo muestra una ligera recuperación en su puntaje F1. Esto indica que los patrones de viaje y propinas comenzaron a normalizarse parcialmente o a estabilizarse en una nueva normalidad.
 
 
 - ¿Qué acciones recomendarías para mejorar la robustez del modelo en el tiempo?
@@ -148,7 +201,7 @@ Para mejorar la capacidad del modelo de adaptarse a estos cambios y mantener un 
 
   - Re-entrenamiento periódico y automatizado
 
-    Implementar un pipeline de ML que re-entrene automáticamente el modelo con los datos más recientes (ej. de los últimos 3-6 meses) de forma regular (ej. mensual o trimestral).
+    Implementar un pipeline de ML que re-entrene automáticamente el modelo con los datos más recientes (los últimos 3-6 meses) de forma regular ( mensual o trimestral).
 
   - Monitoreo activo del rendimiento y del drift
 
