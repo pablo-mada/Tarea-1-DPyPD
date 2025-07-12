@@ -15,13 +15,10 @@ Realizaremos lo siguiente:
 
 
 
-
-
-
 ## Instrucciones para configurar y ejecutar el proyecto:
 
 
-- Clonar el repositorio
+1. Clonar el repositorio
 
 Abre tu terminal (o línea de comandos) y clona el repositorio a la ubicación deseada en tu máquina local. Luego, navega al directorio del proyecto:
 
@@ -55,14 +52,14 @@ Se creará es siguiente esquema de directorios:
 └── requirements.txt
 ```
 
-- Crea un entorno virtual (llamado `venv`)  
+2. Crea un entorno virtual (llamado `venv`)  
 
 ```bash
     python -m venv venv  
 ```   
 
 
-- Activar el entorno virtual
+3. Activar el entorno virtual
 
 ```bash
     source venv/bin/activate  # macOS / Linux
@@ -72,7 +69,7 @@ Se creará es siguiente esquema de directorios:
 Verás (venv) al inicio de tu prompt de terminal si el entorno está activado correctamente.
 
 
-- Instalar dependencias
+4. Instalar dependencias
 
 Con el entorno virtual activado, instala todas las librerías de Python necesarias para el proyecto utilizando el archivo `requirements.txt`.
 
@@ -82,7 +79,7 @@ Con el entorno virtual activado, instala todas las librerías de Python necesari
 
 
 
-- Ejecutar el Entrenamiento del Modelo
+5. Ejecutar el Entrenamiento del Modelo
 
 El script de entrenamiento `run_training.py` se encargará de:
 
@@ -100,7 +97,7 @@ Para ejecutar:
 
 
 
-- Ejecutar la evaluación mensual
+6. Ejecutar la evaluación mensual
 
 Una vez que el modelo ha sido entrenado y guardado, puedes ejecutar el script de evaluación `run_monthly_evaluation.py`. Este script:
 
@@ -135,7 +132,7 @@ Observamos que el número de ejemplos bajó en Marzo y luego creció paulatiname
 
 ## Análisis crítico y explicación de resultados
 
-- ¿El modelo mantiene un rendimiento consistente?
+### ¿El modelo mantiene un rendimiento consistente?
 
 La siguiente tabla muestra los resultados de todo el año 2020, con las columnas `num_examples`(número de ejemplos) y `f1_score ` (puntuación F1). 
 
@@ -171,7 +168,7 @@ Esta no consistencia en el rendimiento es un indicador claro de que el modelo se
 
 
 
-- ¿Qué factores podrían explicar la variación en el desempeño?
+### ¿Qué factores podrían explicar la variación en el desempeño?
 
 
 La variación observada en el rendimiento del modelo a lo largo de 2020 puede explicarse principalmente por la irrupción y el desarrollo de la pandemia de COVID-19 y sus consecuentes efectos en el comportamiento social y económico, lo que se traduce en fenómenos de Data Drift y Concept Drift.
@@ -195,7 +192,7 @@ La variación observada en el rendimiento del modelo a lo largo de 2020 puede ex
     A medida que las restricciones se fueron flexibilizando y la movilidad aumentó, se ve un incremento gradual en `num_examples`. El modelo muestra una ligera recuperación en su puntaje F1. Esto indica que los patrones de viaje y propinas comenzaron a normalizarse parcialmente o a estabilizarse en una nueva normalidad.
 
 
-- ¿Qué acciones recomendarías para mejorar la robustez del modelo en el tiempo?
+### ¿Qué acciones recomendarías para mejorar la robustez del modelo en el tiempo?
 
 Para mejorar la capacidad del modelo de adaptarse a estos cambios y mantener un rendimiento aceptable, especialmente frente a fenómenos de drift tan severos, se recomiendan las siguientes acciones:
 
