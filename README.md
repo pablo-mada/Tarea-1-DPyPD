@@ -23,7 +23,8 @@ Realizaremos lo siguiente:
 Abre tu terminal (o línea de comandos) y clona el repositorio a la ubicación deseada en tu máquina local. Luego, navega al directorio del proyecto:
 
 ```bash
-git clone [https://github.com/pablo-mada/Tarea-1-DPyPD.git](https://github.com/pablo-mada/Tarea-1-DPyPD.git)
+git clone https://github.com/pablo-mada/Tarea-1-DPyPD.git
+
 cd Tarea-1-DPyPD 
 ```
 
